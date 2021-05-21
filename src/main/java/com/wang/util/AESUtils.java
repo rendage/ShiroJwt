@@ -57,6 +57,7 @@ public class AESUtils {
      */
     private static String doAES(String data, String key, int encryptMode) {
         try {
+
             if (StringUtils.isEmpty(data) || StringUtils.isEmpty(key)) { return null; }
             boolean encrypt = encryptMode == Cipher.ENCRYPT_MODE;
             byte[] content;
