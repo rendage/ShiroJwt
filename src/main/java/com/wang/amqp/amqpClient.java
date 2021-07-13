@@ -22,12 +22,16 @@ public class amqpClient {
 
         }
     }*/
-    @PostConstruct
+   // @PostConstruct
     public void sendMsgV2(){
         for (int i=0;i<10000;i++){
+            long count=100000444;
+            PushNotificationRequest pushNotificationRequest = new PushNotificationRequest();
+            pushNotificationRequest.setToId(100000444+i);
+            pushNotificationRequest.setMsg("Hello Mr.ren");
             String request = UUID.randomUUID().toString().replaceAll("_", "");
-            rabbitTemplate.convertAndSend("eventMsgDirectExchange","bindingqueueandexchange",request);
-            log.debug(">>>>>正在发送第{}消息：>>>>>>>>>>{}",i,request);
+            rabbitTemplate.convertAndSend("eventMsgDirectExchange","bindingqueueandexchange",pushNotificationRequest);
+            log.info(">>>>>正在发送第{}消息：>>>>>>>>>>{}",i,request);
 
         }
     }

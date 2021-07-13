@@ -1,60 +1,82 @@
 server:
-    port: 8080
+  port: 8080
 
 spring:
-    datasource:
-        name: ShiroJwt
-        url: jdbc:mysql://127.0.0.1:3306/mysql?useSSL=false&useUnicode=true&characterEncoding=UTF-8
-        username: root
-        password: password
-        # 使用Druid数据源
-        type: com.alibaba.druid.pool.DruidDataSource
-        driver-class-name: com.mysql.jdbc.Driver
-        druid:
-            filters: stat
-            maxActive: 20
-            initialSize: 1
-            maxWait: 60000
-            minIdle: 1
-            timeBetweenEvictionRunsMillis: 60000
-            minEvictableIdleTimeMillis: 300000
-            validationQuery: select 'x'
-            testWhileIdle: true
-            testOnBorrow: false
-            testOnReturn: false
-            poolPreparedStatements: true
-            maxOpenPreparedStatements: 20
-    rabbitmq:
-        port: 5672
-        host: 192.168.3.89
-        password: sasa
-        username: sasa
-    # 404交给异常处理器处理
-    mvc:
-        throw-exception-if-no-handler-found: true
-    # 404交给异常处理器处理
-    resources:
-        add-mappings: false
-
-
+  datasource:
+    name: ShiroJwt
+    url: jdbc:mysql://127.0.0.1:3306/mysql?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: password
+    # 使用Druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      filters: stat
+      maxActive: 20
+      initialSize: 1
+      maxWait: 60000
+      minIdle: 1
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
+  rabbitmq:
+    port: 5672
+    host: 192.168.4.18
+    password: sasa
+    username: sasa
+  # 404交给异常处理器处理
+  mvc:
+    throw-exception-if-no-handler-found: true
+  # 404交给异常处理器处理
+  resources:
+    add-mappings: false
+  redis:
+    #redis中心=127.0.0.1
+      host: 127.0.0.1
+    #redis.host=10.75.202.11
+      port: 6379
+    #redis.password=123456
+      maxTotal: 200
+      maxIdle: 100
+      minIdle: 8
+      maxWaitMillis: 100000
+      maxActive: 300
+      testOnBorrow: true
+      testOnReturn: true
+    #Idle时进行连接扫描
+      testWhileIdle: true
+    #表示idle object evitor两次扫描之间要sleep的毫秒数
+      timeBetweenEvictionRunsMillis: 30000
+    #表示idle object evitor每次扫描的最多的对象数
+      numTestsPerEvictionRun: 10
+    #表示一个对象至少停留在idle状态的最短时间，然后才能被idle object evitor扫描并驱逐；这一项只有在timeBetweenEvictionRunsMillis大于0时才有意义
+      minEvictableIdleTimeMillis: 60000
+      timeout: 100000
 mybatis:
-    # Mybatis配置Mapper路径
-    mapper-locations: classpath:mapper/*.xml
-    # Mybatis配置Model类对应
-    type-aliases-package: com.wang.model.entity
+  # Mybatis配置Mapper路径
+  mapper-locations: classpath:mapper/*.xml
+  # Mybatis配置Model类对应
+  type-aliases-package: com.wang.model.entity
 
 pagehelper:
-    params: count=countSql
-    # 指定分页插件使用哪种方言
-    helper-dialect: mysql
-    # 分页合理化参数 pageNum<=0时会查询第一页 pageNum>pages(超过总数时) 会查询最后一页
-    reasonable: 'true'
-    support-methods-arguments: 'true'
+  params: count=countSql
+  # 指定分页插件使用哪种方言
+  helper-dialect: mysql
+  # 分页合理化参数 pageNum<=0时会查询第一页 pageNum>pages(超过总数时) 会查询最后一页
+  reasonable: 'true'
+  support-methods-arguments: 'true'
 
 mapper:
-    # 通用Mapper的insertSelective和updateByPrimaryKeySelective中是否判断字符串类型!=''
-    not-empty: true
+  # 通用Mapper的insertSelective和updateByPrimaryKeySelective中是否判断字符串类型!=''
+  not-empty: true
 
 logging:
-    # Debug打印SQL
-    level.com.wang.mapper: debug
+  # Debug打印SQL
+  level.com.wang.mapper: debug
+
+

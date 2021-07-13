@@ -1,3 +1,4 @@
+/*
 package com.wang.amqp;
 
 import com.rabbitmq.client.Channel;
@@ -18,18 +19,20 @@ import java.util.concurrent.locks.ReentrantLock;
 @Component
 public class amqpListenerV2 {
     private static Logger log = LoggerFactory.getLogger(amqpListenerV2.class);
-    private ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(10, 20, 6, TimeUnit.SECONDS, new LinkedBlockingDeque<>(1000), Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
+  //  private ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(10, 20, 6, TimeUnit.SECONDS, new LinkedBlockingDeque<>(1000), Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
     private static int CAPACITY = 10000;
     private String QUEUE_NAME_EVENT_MSG="eventMsgQueue";
 
-    /**
+    */
+/**
      * amqp 批次拉取 pull
      *
      * @param message
      * @param channel
      * @throws Exception
-     */
-    @RabbitListener(queues = {"eventMsgQueue"})
+     *//*
+
+  //  @RabbitListener(queues = {"eventMsgQueue"})
     public void getMessage(Message message, Channel channel) throws Exception {
         int total =0;
         log.error(">>>>>>>>>>开始第次数{}消费消息message>>>>>>>>>>>",total++);
@@ -78,12 +81,13 @@ public class amqpListenerV2 {
             countDownLatch.await();
         } catch (Exception e) {
             log.error(">>>>>>>>>>>>>>>消息{}:消费异常{}", message.getBody(), e.getMessage());
-            throw new Exception(e.getMessage());
+            //throw new Exception(e.getMessage());
         }
 
     }
 
-    /**    @RabbitListener(queues = {"eventMsgQueue"})
+    */
+/**    @RabbitListener(queues = {"eventMsgQueue"})
     public void getMessage(Message message, Channel channel) throws IOException {
     log.error(">>>>>>>>>>开始消费消息message:{}>>>>", message.getBody());
 
@@ -109,5 +113,7 @@ public class amqpListenerV2 {
     log.error(">>>>>>>>>>结束消费消息message>>>>，用时:{}", t - timeMillis);
     channel.basicAck(message.getMessageProperties().getDeliveryTag(), true);
     }
-     * */
+     * *//*
+
 }
+*/

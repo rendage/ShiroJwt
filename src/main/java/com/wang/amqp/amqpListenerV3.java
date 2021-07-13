@@ -1,3 +1,4 @@
+/*
 package com.wang.amqp;
 
 import com.rabbitmq.client.Channel;
@@ -22,14 +23,16 @@ public class amqpListenerV3 {
     private static int CAPACITY = 10000;
     private String QUEUE_NAME_EVENT_MSG="eventMsgQueue";
 
-    /**
+    */
+/**
      * amqp 批次拉取 pull
      *
      * @param message
      * @param channel
      * @throws Exception
-     */
-    @RabbitListener(queues = {"eventMsgQueue"})
+     *//*
+
+   // @RabbitListener(queues = {"eventMsgQueue"})
     public void getMessage(Message message, Channel channel) throws Exception {
         int total =0;
         log.error(">>>>>>>>>>开始第次数{}消费消息message>>>>>>>>>>>",total++);
@@ -83,7 +86,8 @@ public class amqpListenerV3 {
 
     }
 
-    /**    @RabbitListener(queues = {"eventMsgQueue"})
+    */
+/**    @RabbitListener(queues = {"eventMsgQueue"})
     public void getMessage(Message message, Channel channel) throws IOException {
     log.error(">>>>>>>>>>开始消费消息message:{}>>>>", message.getBody());
 
@@ -109,5 +113,7 @@ public class amqpListenerV3 {
     log.error(">>>>>>>>>>结束消费消息message>>>>，用时:{}", t - timeMillis);
     channel.basicAck(message.getMessageProperties().getDeliveryTag(), true);
     }
-     * */
+     * *//*
+
 }
+*/
