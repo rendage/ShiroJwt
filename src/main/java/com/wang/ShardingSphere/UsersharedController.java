@@ -1,8 +1,7 @@
-package com.wang.controller;
+package com.wang.ShardingSphere;
 
 
 import com.wang.model.User1;
-import com.wang.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

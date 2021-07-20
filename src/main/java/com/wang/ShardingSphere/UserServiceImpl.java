@@ -1,11 +1,11 @@
-package com.wang.service.impl;
+package com.wang.ShardingSphere;
 
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.wang.mapper.UserMapper;
 import com.wang.model.User1;
-import com.wang.service.UserService;
+import com.wang.ShardingSphere.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

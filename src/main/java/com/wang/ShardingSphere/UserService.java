@@ -1,4 +1,4 @@
-package com.wang.service;
+package com.wang.ShardingSphere;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
