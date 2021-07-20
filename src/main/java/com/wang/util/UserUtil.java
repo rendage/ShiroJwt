@@ -38,7 +38,7 @@ public class UserUtil {
         String account = JwtUtil.getClaim(token, Constant.ACCOUNT);
         UserDto userDto = new UserDto();
         userDto.setAccount(account);
-        userDto = userMapper.selectOne(userDto);
+      //  userDto = userMapper.selectOne(userDto);
         // 用户是否存在
         if (userDto == null) {
             throw new CustomException("该帐号不存在(The account does not exist.)");

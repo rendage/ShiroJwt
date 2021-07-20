@@ -59,7 +59,7 @@ public class UserRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
         String account = JwtUtil.getClaim(principalCollection.toString(), Constant.ACCOUNT);
         UserDto userDto = new UserDto();
-        userDto.setAccount(account);
+      //  userDto.setAccount(account);
         // 查询用户角色
         List<RoleDto> roleDtos = roleMapper.findRoleByUser(userDto);
         for (RoleDto roleDto : roleDtos) {
@@ -94,7 +94,7 @@ public class UserRealm extends AuthorizingRealm {
         // 查询用户是否存在
         UserDto userDto = new UserDto();
         userDto.setAccount(account);
-        userDto = userMapper.selectOne(userDto);
+    //    userDto = userMapper.selectOne(userDto);
         if (userDto == null) {
             throw new AuthenticationException("该帐号不存在(The account does not exist.)");
         }

@@ -1,14 +1,12 @@
 package com.wang.util;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.parser.Feature;
 import lombok.Data;
+import org.springframework.util.CollectionUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.*;
+import java.util.concurrent.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -73,11 +71,28 @@ public class AsynAndJavafunction {
             String[] a=new String[2];
 
             List<String> list = new ArrayList<String>();
+            list.add("nihao");
+            HashSet<String> strings = new HashSet<>(list);
+            strings.add("hello");
+            System.out.println(JSON.toJSON(strings));
             System.out.println(a);
-            List<String> objects = Arrays.asList(a);
-            objects.add("sasa");
-        }
+            ThreadPoolExecutor exe = new ThreadPoolExecutor(10, 20, 6, TimeUnit.SECONDS, new LinkedBlockingDeque(1000), Executors.defaultThreadFactory(), new ThreadPoolExecutor.CallerRunsPolicy());
+            while (true){
+                exe.execute(()->{
+                    ABC order1 = new ABC();
+                    ABC1 order2 = new ABC1();
+                    System.out.println("当前线程名："+Thread.currentThread().getName()+"输出"+order1.toString()+"||"+order2.toString());
+                });
+            }
 
+        }
+    public static <T> Set<T> removeDuplicateBySet(List<T> data) {
+
+        if (CollectionUtils.isEmpty(data)) {
+            return new HashSet<>();
+        }
+        return new HashSet<>(data);
+    }
         public static ABC doFunctioninvoke(String str,Function<String,ABC> function){
             return function.apply(str);
         }

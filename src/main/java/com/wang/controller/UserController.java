@@ -1,3 +1,4 @@
+/*
 package com.wang.controller;
 
 import com.github.pagehelper.PageHelper;
@@ -31,19 +32,23 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
+*/
 /**
  * UserController
  * @author dolyw.com
  * @date 2018/8/29 15:45
- */
+ *//*
+
 @RestController
 @RequestMapping("/user")
 @PropertySource("classpath:config.properties")
 public class UserController {
 
-    /**
+    */
+/**
      * RefreshToken过期时间
-     */
+     *//*
+
     @Value("${refreshTokenExpireTime}")
     private String refreshTokenExpireTime;
 
@@ -57,13 +62,15 @@ public class UserController {
         this.userService = userService;
     }
 
-    /**
+    */
+/**
      * 获取用户列表
      * @param 
      * @return java.util.Map<java.lang.String,java.lang.Object>
      * @author dolyw.com
      * @date 2018/8/30 10:41
-     */
+     *//*
+
     @GetMapping
     @RequiresPermissions(logical = Logical.AND, value = {"user:view"})
     public ResponseBean user(@Validated BaseDto baseDto) {
@@ -83,13 +90,15 @@ public class UserController {
         return new ResponseBean(HttpStatus.OK.value(), "查询成功(Query was successful)", result);
     }
 
-    /**
+    */
+/**
      * 获取在线用户(查询Redis中的RefreshToken)
      * @param 
      * @return com.wang.model.common.ResponseBean
      * @author dolyw.com
      * @date 2018/9/6 9:58
-     */
+     *//*
+
     @GetMapping("/online")
     @RequiresPermissions(logical = Logical.AND, value = {"user:view"})
     public ResponseBean online() {
@@ -114,13 +123,15 @@ public class UserController {
         return new ResponseBean(HttpStatus.OK.value(), "查询成功(Query was successful)", userDtos);
     }
 
-    /**
+    */
+/**
      * 登录授权
      * @param userDto
      * @return com.wang.model.common.ResponseBean
      * @author dolyw.com
      * @date 2018/8/30 16:21
-     */
+     *//*
+
     @PostMapping("/login")
     public ResponseBean login(@Validated(UserLoginValidGroup.class) @RequestBody UserDto userDto, HttpServletResponse httpServletResponse) {
         // 查询数据库中的帐号信息
@@ -151,13 +162,15 @@ public class UserController {
         }
     }
 
-    /**
+    */
+/**
      * 测试登录
      * @param
      * @return com.wang.model.common.ResponseBean
      * @author dolyw.com
      * @date 2018/8/30 16:18
-     */
+     *//*
+
     @GetMapping("/article")
     public ResponseBean article() {
         Subject subject = SecurityUtils.getSubject();
@@ -169,26 +182,30 @@ public class UserController {
         }
     }
 
-    /**
+    */
+/**
      * 测试登录注解(@RequiresAuthentication和subject.isAuthenticated()返回true一个性质)
      * @param
      * @return com.wang.model.common.ResponseBean
      * @author dolyw.com
      * @date 2018/8/30 16:18
-     */
+     *//*
+
     @GetMapping("/article2")
     @RequiresAuthentication
     public ResponseBean requireAuth() {
         return new ResponseBean(HttpStatus.OK.value(), "您已经登录了(You are already logged in)", null);
     }
 
-    /**
+    */
+/**
      * 获取当前登录用户信息
      * @param
      * @return com.wang.model.common.ResponseBean
      * @author dolyw.com
      * @date 2019/3/15 11:51
-     */
+     *//*
+
     @GetMapping("/info")
     @RequiresAuthentication
     public ResponseBean info() {
@@ -203,13 +220,15 @@ public class UserController {
         return new ResponseBean(HttpStatus.OK.value(), "您已经登录了(You are already logged in)", userDto);
     }
 
-    /**
+    */
+/**
      * 获取指定用户
      * @param id
      * @return java.util.Map<java.lang.String,java.lang.Object>
      * @author dolyw.com
      * @date 2018/8/30 10:42
-     */
+     *//*
+
     @GetMapping("/{id}")
     @RequiresPermissions(logical = Logical.AND, value = {"user:view"})
     public ResponseBean findById(@PathVariable("id") Integer id) {
@@ -220,13 +239,15 @@ public class UserController {
         return new ResponseBean(HttpStatus.OK.value(), "查询成功(Query was successful)", userDto);
     }
 
-    /**
+    */
+/**
      * 新增用户
      * @param userDto
      * @return java.util.Map<java.lang.String,java.lang.Object>
      * @author dolyw.com
      * @date 2018/8/30 10:42
-     */
+     *//*
+
     @PostMapping
     @RequiresPermissions(logical = Logical.AND, value = {"user:edit"})
     public ResponseBean add(@Validated(UserEditValidGroup.class) @RequestBody UserDto userDto) {
@@ -251,13 +272,15 @@ public class UserController {
         return new ResponseBean(HttpStatus.OK.value(), "新增成功(Insert Success)", userDto);
     }
 
-    /**
+    */
+/**
      * 更新用户
      * @param userDto
      * @return java.util.Map<java.lang.String,java.lang.Object>
      * @author dolyw.com
      * @date 2018/8/30 10:42
-     */
+     *//*
+
     @PutMapping
     @RequiresPermissions(logical = Logical.AND, value = {"user:edit"})
     public ResponseBean update(@Validated(UserEditValidGroup.class) @RequestBody UserDto userDto) {
@@ -286,13 +309,15 @@ public class UserController {
         return new ResponseBean(HttpStatus.OK.value(), "更新成功(Update Success)", userDto);
     }
 
-    /**
+    */
+/**
      * 删除用户
      * @param id
      * @return java.util.Map<java.lang.String,java.lang.Object>
      * @author dolyw.com
      * @date 2018/8/30 10:43
-     */
+     *//*
+
     @DeleteMapping("/{id}")
     @RequiresPermissions(logical = Logical.AND, value = {"user:edit"})
     public ResponseBean delete(@PathVariable("id") Integer id) {
@@ -303,13 +328,15 @@ public class UserController {
         return new ResponseBean(HttpStatus.OK.value(), "删除成功(Delete Success)", null);
     }
 
-    /**
+    */
+/**
      * 剔除在线用户
      * @param id
      * @return com.wang.model.common.ResponseBean
      * @author dolyw.com
      * @date 2018/9/6 10:20
-     */
+     *//*
+
     @DeleteMapping("/online/{id}")
     @RequiresPermissions(logical = Logical.AND, value = {"user:edit"})
     public ResponseBean deleteOnline(@PathVariable("id") Integer id) {
@@ -321,4 +348,4 @@ public class UserController {
         }
         throw new CustomException("剔除失败，Account不存在(Deletion Failed. Account does not exist.)");
     }
-}
+}*/

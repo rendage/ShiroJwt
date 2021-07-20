@@ -1,12 +1,13 @@
 package com.wang.mapper;
 
-import com.wang.model.UserDto;
-import tk.mybatis.mapper.common.Mapper;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.wang.model.User1;
 
 /**
- * UserMapper
- * @author dolyw.com
- * @date 2018/8/31 14:43
+ * user dao层
+ * @author lihaodong
  */
-public interface UserMapper extends Mapper<UserDto> {
+public interface UserMapper extends BaseMapper<User1> {
+
 }

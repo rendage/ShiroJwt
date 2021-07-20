@@ -14,7 +14,6 @@ import javax.validation.constraints.NotNull;
  * @author dolyw.com
  * @date 2018/8/31 14:43
  */
-@Table(name = "user")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 3342723124953988435L;

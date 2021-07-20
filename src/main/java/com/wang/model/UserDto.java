@@ -2,6 +2,7 @@ package com.wang.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.wang.model.entity.User;
+
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.util.Date;
